@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>This is a sample page</title>
+
+    <style>
+        /*Background for page*/
+        body {
+            background: linear-gradient(to right, #ffffff, #000000);
+            transition: background 0.5s ease;
+
+            margin: 0;
+            padding: 20px;
+        }
+
+        /*buttons*/
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+            line-height: 65px;
+            height: 65px;
+            width: 100px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 13px;
+            box-shadow: 2px 2px 6px black;
+            transition: all 0.3s ease;
+        }
+        
+        #submitBtn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .test {
+            background: linear-gradient(to right, #c3ff00, #00ff1a);
+            color: black;
+        }
+
+        .seed {
+            background: linear-gradient(to right, #00fbff, #0008ff);
+            color: black;
+        }
+
+        .peak {
+            background: linear-gradient(to right, #ff9100, #ff0000);
+            color: black;
+        }
+
+        .btn:hover {
+            filter: brightness(1.1);
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            filter: brightness(0.9);
+            transform: translateY(1px);
+        }
+
+        /*over button*/
+        .over {
+            background-color: white;
+            border: 2px solid black;
+            color: red;
+        }
+
+        .over:hover {
+            background: linear-gradient(to right, #ed0000, #440000);
+            border-color: #8b0000;
+            color: rgb(255, 55, 55);
+        }
+
+        .over:active {
+            background-color: black;
+            border-color: black;
+            color: rgb(255, 0, 0);
+        }
+
+        /*text*/
+        .party {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 30px;
+            border-color: black;
+            background: linear-gradient(to right, #37ff00, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .prophecy {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 32px;
+            font-weight: bold;
+            border-color: #000000;
+            background: linear-gradient(to right, #ffbf00, #fbff00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /*taking inputs*/
+        .take {
+            font-size: 20px;
+            margin-left: 12px;
+            margin-top: 12px;
+            padding: 8px;
+            background: linear-gradient(to right, #000000, #6f00ff);
+            border: 2px solid #00ff99;
+            color: rgb(255, 255, 255);
+            outline: none;
+            transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+        .take:focus 
+        {
+            border-color: #ffffff;
+            box-shadow: 0 0 8px rgba(0, 255, 255, 0.8);
+        }
+
+        /*image*/
+        .img {
+            width: 300px;
+            height: 300px;
+            display: block;
+            margin-top: 12px;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+
+<body>
+    <p class="party">Here are some sample testings</p>
+
+    <a class="btn test" href="#">It works?</a>
+    <a class="btn seed" href="https://youtube.com/shorts/v-_JUL765mY?si=7AkjZb7g4w06AGMu">yesiam</a>
+    <a class="btn peak" href="https://youtu.be/SWV7SzQjLyw?si=SaATFNao3elmIkr1">peak</a>
+    <a class="btn over" href="https://tenor.com/search/its-over-gifs">It's Over</a>
+
+    <!--swap images-->
+    <img
+        class="img"
+        id="swapImg"
+        src="/static/madao.jpg"
+        alt="Swap image"
+        onclick="swapImage()">
+
+    <form action="/submit" method="POST">
+        <input class="take" 
+        type="text" 
+        name="user_input" 
+        placeholder="Ask" 
+        maxlength="39" 
+        required>
+        <button class="btn test" type="submit" id="submitBtn" disabled>Send</button>
+    </form>
+    <p id="charCount" style="margin-left:12px; color:white;">0 / 39</p>
+
+    <p class="prophecy">
+        "My name is Yoshikage Kira. 
+        I'm 33 years old. 
+        My house is in the northeast section of Morioh, where all the villas are, and I am not married. 
+        I work as an employee for the Kame Yu department stores, and I get home every day by 8 PM at the latest. 
+        I don't smoke, but I occasionally drink. 
+        I'm in bed by 11 PM, and make sure I get eight hours of sleep, 
+        no matter what. After having a glass of warm milk and doing about twenty minutes of stretches before going to bed, 
+        I usually have no problems sleeping until morning. 
+        Just like a baby, I wake up without any fatigue or stress in the morning. 
+        I was told there were no issues at my last check-up.
+        I'm trying to explain that I'm a person who wishes to live a very quiet life. 
+        I take care not to trouble myself with any enemies, like winning and losing, 
+        that would cause me to lose sleep at night. 
+        That is how I deal with society, and I know that is what brings me happiness. 
+        Although, if I were to fight I wouldn't lose to anyone.”
+
+                                                             --Yoshikage Kira circa 1999
+    </p>
+
+    <!--javascript-->
+   <script>
+        let isImageOne = true;
+
+        function swapImage() {
+            const img = document.getElementById("swapImg");
+            const body = document.body;
+
+            if (isImageOne) {
+                img.src = "/static/oadam.jpg";
+                body.style.background = "linear-gradient(to right, #a80000, #19004b)";
+            } else {
+                img.src = "/static/madao.jpg";
+                body.style.background = "linear-gradient(to right, #00a6ff, #ff0000)";
+            }
+
+            isImageOne = !isImageOne;
+        }
+    </script>
+    <script>
+        const input = document.querySelector(".take");
+        const counter = document.getElementById("charCount");
+        const submitBtn = document.getElementById("submitBtn");
+        input.addEventListener("input", () => {
+            const length = input.value.length;
+            counter.textContent = length + " / 39";
+            counter.style.color = length >= 39 ? "red" : "white";
+            submitBtn.disabled = input.value.trim() === "";
+        });
+    </script>
+</body>
+</html>
