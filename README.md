@@ -11,5 +11,5 @@ docker in that device that works when run
 internet connection for docker
 also make sure to give privilliges to the shell scripts
 
-thats it, rest is taken care by docker
+thats it, rest is taken care of by docker
 and you can do your stuff
